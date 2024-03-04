@@ -10,12 +10,13 @@ dx, dy = Lx / (Nx - 1), Ly / (Ny - 1)  # Distancia entre puntos de la malla
 # Inicialización de la malla
 u = np.zeros((Nx, Ny))
 
-# Condiciones de contorno
-u[-1, :] = 1  # u(1, y) = 1
-
-# Definición de x e y para la malla
+# Aplicación de las condiciones de contorno
 x = np.linspace(0, Lx, Nx)
 y = np.linspace(0, Ly, Ny)
+u[0, :] = 1 - y**2  # u(0, y) = 1 - y^2
+u[-1, :] = 1  # u(1, y) = 1
+u[:, 0] = 0  # u(x, 0) = 0
+u[:, -1] = x**2  # u(x, 1) = x^2
 
 # Parámetros de la iteración
 tolerancia = 1e-4  # Criterio de convergencia
@@ -23,15 +24,18 @@ max_iter = 10000  # Número máximo de iteraciones
 error = 1  # Inicialización del error
 iteracion = 0  # Contador de iteraciones
 
-# Coeficiente adicional debido al término fuente 2u
-coef = 2 * dx**2
-
-# Método de Gauss-Seidel para ∇u = 2u
+# Método de Gauss-Seidel
 while error > tolerancia and iteracion < max_iter:
     u_prev = u.copy()
     for i in range(1, Nx - 1):
         for j in range(1, Ny - 1):
-            u[i, j] = (u[i+1, j] + u[i-1, j] + u[i, j+1] + u[i, j-1]) / (4 + coef)
+            u[i, j] = 0.25 * (u[i + 1, j] + u[i - 1, j] + u[i, j + 1] + u[i, j - 1])
+    
+    # Actualizar las condiciones de contorno en cada iteración
+    u[0, :] = 1 - y**2
+    u[-1, :] = 1
+    u[:, 0] = 0
+    u[:, -1] = x**2
     
     error = np.linalg.norm(u - u_prev, ord=np.inf)
     iteracion += 1
@@ -50,7 +54,7 @@ surf = ax.plot_surface(X, Y, u.T, cmap='viridis', edgecolor='none')
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('U')
-ax.set_title('Solución de ∇u = 2u con condiciones de contorno específicas')
+ax.set_title('Solución de ∇u = 0 con condiciones de contorno variadas')
 
 # Barra de colores
 fig.colorbar(surf, shrink=0.5, aspect=5)

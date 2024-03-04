@@ -10,13 +10,8 @@ dx, dy = Lx / (Nx - 1), Ly / (Ny - 1)  # Distancia entre puntos de la malla
 # Inicialización de la malla
 u = np.zeros((Nx, Ny))
 
-# Aplicación de las condiciones de contorno
-x = np.linspace(0, Lx, Nx)
-y = np.linspace(0, Ly, Ny)
-u[0, :] = 1 - y**2  # u(0, y) = 1 - y^2
+# Condiciones de contorno
 u[-1, :] = 1  # u(1, y) = 1
-u[:, 0] = 0  # u(x, 0) = 0
-u[:, -1] = x**2  # u(x, 1) = x^2
 
 # Parámetros de la iteración
 tolerancia = 1e-4  # Criterio de convergencia
@@ -31,16 +26,22 @@ while error > tolerancia and iteracion < max_iter:
         for j in range(1, Ny - 1):
             u[i, j] = 0.25 * (u[i + 1, j] + u[i - 1, j] + u[i, j + 1] + u[i, j - 1])
     
-    # Actualizar las condiciones de contorno en cada iteración
-    u[0, :] = 1 - y**2
-    u[-1, :] = 1
-    u[:, 0] = 0
-    u[:, -1] = x**2
+    # Actualizar las condiciones de contorno en cada iteración puede ser necesario dependiendo de la formulación
+    # u[0, :] = 0  # u(0, y) = 0
+    # u[:, 0] = 0  # u(x, 0) = 0
+    # u[:, -1] = 0  # u(x, 1) = 0 excepto en x=1 donde ya se ha definido u(1, y) = 1
     
     error = np.linalg.norm(u - u_prev, ord=np.inf)
     iteracion += 1
 
+(u, iteracion, error)
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
 # Crear una malla para el ploteo
+x = np.linspace(0, Lx, Nx)
+y = np.linspace(0, Ly, Ny)
 X, Y = np.meshgrid(x, y)
 
 # Crear la figura y el eje para un gráfico 3D
@@ -54,7 +55,7 @@ surf = ax.plot_surface(X, Y, u.T, cmap='viridis', edgecolor='none')
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('U')
-ax.set_title('Solución de ∇u = 0 con condiciones de contorno variadas')
+ax.set_title('Solución de ∇u = 0 usando el método de Gauss-Seidel')
 
 # Barra de colores
 fig.colorbar(surf, shrink=0.5, aspect=5)

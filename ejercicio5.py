@@ -5,10 +5,18 @@ from mpl_toolkits.mplot3d import Axes3D
 # Parámetros de la simulación
 N = 20  # Tamaño de la malla (N+2 x N+2 para incluir las fronteras)
 tol = 1e-4  # Tolerancia para la convergencia
-max_iter = 10000  # Número máximo de iteraciones
+max_iter = 5000  # Número máximo de iteraciones
+pi = np.pi
+dx = pi / (N + 1)  # Distancia entre puntos en la malla
 
 # Inicialización de la malla con ceros (incluyendo las condiciones de contorno)
 u = np.zeros((N+2, N+2))
+
+# Aplicar las condiciones de contorno
+y = np.linspace(0, pi, N+2)
+u[0, :] = y  # u(0, y) = y
+u[-1, :] = y  # u(pi, y) = y
+# u(x, 0) = 0 y u(x, pi) = 0 ya están aplicados por la inicialización a ceros
 
 # Implementación del método de Gauss-Seidel
 def gauss_seidel(u, tol, max_iter):
@@ -32,8 +40,8 @@ def gauss_seidel(u, tol, max_iter):
 u_sol = gauss_seidel(u, tol, max_iter)
 
 # Crear la malla de coordenadas
-x = np.linspace(0, 1, N+2)
-y = np.linspace(0, 1, N+2)
+x = np.linspace(0, pi, N+2)
+y = np.linspace(0, pi, N+2)
 X, Y = np.meshgrid(x, y)
 
 # Gráfico 3D de la solución
