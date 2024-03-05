@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+# ecuacion de helmholtz
+
 # Parámetros de la simulación
 N = 20  # Tamaño de la malla (N+2 x N+2 para incluir las fronteras)
 lambda_sq = 1**2  # Valor de lambda al cuadrado

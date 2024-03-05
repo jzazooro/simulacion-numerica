@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+# ecuacion de poisson
+
 # Parámetros del problema
 Lx, Ly = 1, 1  # Dimensiones del dominio
 Nx, Ny = 20, 20  # Número de puntos en la malla en cada dirección
