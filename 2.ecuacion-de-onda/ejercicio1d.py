@@ -43,3 +43,8 @@ ax.set_xlabel('Posición a lo largo de la cuerda (m)')
 ax.set_ylabel('Tiempo (s)')
 ax.set_zlabel('Desplazamiento de la cuerda (m)')
 plt.show()
+
+# Hallar la velocidad maxima de propagación de la onda
+v_max = Δx / Δt
+
+print('La velocidad máxima de propagación de la onda es:', v_max)
