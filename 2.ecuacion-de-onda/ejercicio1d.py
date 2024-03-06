@@ -1,8 +1,8 @@
-#f(x)=x(b-x) , g(x)=0 , b=5, d=10, n=40, m=400, v=0.5 ,d es el tiempo,  b la longitud de la cuerda , m es el paso en la variable temporal, n es el paso en la variable espacial
-
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+
+# ecuacion de onda
 
 # Parámetros dados
 b = 5
