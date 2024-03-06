@@ -39,10 +39,11 @@ ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, Y, u.T, cmap='viridis')
 
 ax.set_title('Evolución de la cuerda en el tiempo con condición inicial modificada')
-ax.set_xlabel('Posición a lo largo de la cuerda (m)')
-ax.set_ylabel('Tiempo (s)')
-ax.set_zlabel('Desplazamiento de la cuerda (m)')
+ax.set_xlabel('Posición a lo largo de la cuerda')
+ax.set_ylabel('Tiempo')
+ax.set_zlabel('Desplazamiento de la cuerda')
 plt.show()
 
 # pregunta de examen, por que la onda se propaga hacia esas 2 rectas verdes?
 # respuesta: por que esas 2 rectas verdes son las curvas caracteristicas de la EDP
+# hallar a mano las curvas caracteristicas de la EDP para ver que da lo mismo
