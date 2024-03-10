@@ -46,5 +46,5 @@ plt.show()
 
 # b:pregunta de examen, por que la onda se propaga hacia esas 2 rectas verdes?
 # respuesta: por que esas 2 rectas verdes son las curvas caracteristicas de la EDP
-# c:hallar a mano las curvas caracteristicas de la EDP para ver que da lo mismo
+# c: hallar a mano las curvas caracteristicas de la EDP para ver que da lo mismo
 # d: queremos formar ondas no estacionarias (f=g=0). ¿como lo harias?
