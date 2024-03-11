@@ -1,10 +1,10 @@
-# g(x)=sen(x), b=pi, d = 10, n = 40, m = 400, v = 3
-
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Updating parameters for the new conditions
+# ecuacion de onda
+
+# Parámetros dados
 b = np.pi  # Length of the string is now π
 d = 10  # Total simulation time remains 10
 n = 40  # Spatial steps remains 40
