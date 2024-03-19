@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Parámetros
-b = 5       # Tamaño del dominio espacial
-d = 10      # Tiempo final
-N = 40      # Número de divisiones espaciales
-M = 400     # Número de divisiones temporales
+b = 5       
+d = 10      
+N = 40      
+M = 400     
 alpha = 0.3  # Coeficiente de difusión térmica
-dx = b / N  # Espaciado espacial
-dt = d / M  # Espaciado temporal
+dx = b / N  
+dt = d / M  
 
 # Malla espacial y temporal
 x = np.linspace(0, b, N+1)
@@ -38,4 +38,4 @@ plt.colorbar(surf)
 plt.show()
 
 alphamax=dx/np.sqrt(2*dt)
-print(alphamax)
+print("el valo mazimo de alpha es: ", alphamax)
