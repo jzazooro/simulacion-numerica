@@ -2,12 +2,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Parámetros
+# ecuacion de calor
+
+# Parámetros dados
 b = 5       
 d = 10      
 N = 40      
 M = 400     
 alpha = 0.3  # Coeficiente de difusión térmica
+
+# Calculando Δx, Δt
 dx = b / N  
 dt = d / M  
 
