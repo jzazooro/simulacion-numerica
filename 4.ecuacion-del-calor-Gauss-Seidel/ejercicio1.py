@@ -5,11 +5,11 @@ from mpl_toolkits.mplot3d import Axes3D
 # ecuacion de calor
 
 # Parámetros dados
-b = 5
-d = 10
-N = 40
-M = 400
-alpha = 0.3
+b = 5 # longitud de la barra
+d = 10 # tiempo de simulación
+N = 40 # número de puntos en la discretización espacial
+M = 400 # número de puntos en la discretización temporal
+alpha = 0.3 # coeficiente de difusión
 
 # Discretización
 dx = b / N
